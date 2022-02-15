@@ -1,0 +1,76 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- single product -->
+	{% if ok  %}
+	{% else %}
+		<div id='bug' style='border: 1px solid #ccc;
+		margin-top: 20px;'>
+			<h1 style='color:red;font-size:23px;text-align:center'> Số lượng mua vượt quá số lượng trong kho vui lòng nhập lại.</h1>
+		</div>
+	{% endif %}
+	<div class="single-product mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="single-product-img">
+						<img id="oke" src="{{ims.0}}" alt="">
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div class="single-product-content">
+						<h3>{{singerProduct.ProductName}}</h3>
+						<p class="single-product-pricing"> ${{singerProduct.price}}</p>
+						<p><span>Stock:</span>
+							{{singerProduct.stock}}
+						</p>
+						<p>{{singerProduct.describe}}</p>
+						<div class="single-product-form">
+							<form action="" method=POST>
+								{% csrf_token %}
+								<input type="number" placeholder="0" name="quantily" style="width: 164px;text-align: end;">
+								<input type="text" placeholder="UserName" name="User" style="border: 1px solid #ddd;
+								border-radius: 5px;padding: 10px; width: 300px;margin-bottom: 15px;margin-left: 78px;">
+								<input class="cart-btn" type="submit" value=" Buy Now">
+							</form>
+							
+						</div>
+						
+		
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end single product -->
+
+	<!-- more picture -->
+	<div class="more-products mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<img id="okes" src="{{ims.1}}" alt="">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<img id="okes" src="{{ims.2}}" alt="">
+						</div>	
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<img id="okes" src="{{ims.3}}" alt="">
+						</div>				
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end more picture -->
+{% endblock %}
